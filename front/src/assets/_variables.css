@@ -1,0 +1,15 @@
+:root {
+  --color-background: #ffffff;
+  --color-background-mute: #f2f2f2;
+  --color-border: #e5e5e5;
+  --color-text: #213547;
+  --chart-color: #213547;
+}
+
+[data-theme='dark'] {
+  --color-background: #363636;
+  --color-background-mute: #424242;
+  --color-border: #444444;
+  --color-text: #ffffff;
+  --chart-color: #ffffff;
+}
