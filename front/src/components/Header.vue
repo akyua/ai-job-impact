@@ -3,8 +3,8 @@
     <header>
       <nav>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
+          <li><router-link to="/">Home</router-link></li>
+          <li><router-link to="/sobre">Sobre</router-link></li>
         </ul>
       </nav>
       <div class="theme-switcher">

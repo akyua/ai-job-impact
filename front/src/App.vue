@@ -1,19 +1,17 @@
 <template>
   <div id="app">
     <Header @theme-changed="onThemeChanged" />
-    <h1>Gráficos de Impacto de IA no Mercado de Trabalho</h1>
-    <BarChart :is-dark-mode="isDarkMode" />
+    <router-view :is-dark-mode="isDarkMode" />
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
-import BarChart from './components/BarChart.vue'
+
 
 export default {
   components: {
     Header,
-    BarChart,
   },
   data() {
     return {
