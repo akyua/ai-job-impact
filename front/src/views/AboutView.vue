@@ -5,7 +5,8 @@
     <p>Como projeto, resolvemos fazer um site com front-end em Vue.js e back-end em Python com PySpark, para fazermos uma análise dos dados do tema escolhido pela equipe, que é sobre o Impacto de IA no mercado de trabalho.</p>
     
     <h2>Data Sets encontrados e usados no projeto:</h2>
-    <p>[links dos data sets]</p>
+    <p>https://www.kaggle.com/datasets/sahilislam007/ai-impact-on-job-market-20242030</p>
+    <p>https://www.weforum.org/publications/the-future-of-jobs-report-2025/</p>
     
     <div class="alunos">
       <h3>Alunos:</h3>
@@ -20,10 +21,10 @@
 <style>
 .about {
   padding: 20px;
-  max-width: 800px; /* Limit width */
-  margin: 0 auto; /* Center the block */
-  text-align: left; /* Left-align text */
-  color: var(--color-text); /* Ensure text color is correct */
+  max-width: 800px;
+  margin: 0 auto;   
+  text-align: left;
+  color: var(--color-text);
 }
 
 .about h1, .about h2, .about h3 {
