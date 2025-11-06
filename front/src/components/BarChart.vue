@@ -1,6 +1,6 @@
 <template>
   <div class="chart-container">
-    <Bar :data="chartData" :options="chartOptions" />
+    <Bar :data="chartData" :options="finalChartOptions" />
   </div>
 </template>
 
@@ -13,54 +13,35 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 export default {
   components: { Bar },
   props: {
+    chartData: {
+      type: Object,
+      required: true,
+    },
+    chartOptions: {
+      type: Object,
+      default: () => ({}),
+    },
     isDarkMode: {
       type: Boolean,
       required: true,
     },
   },
   computed: {
-    chartData() {
-      const chartColor = this.isDarkMode ? '#ffffff' : '#213547';
-      return {
-        labels: ['January', 'February', 'March'],
-        datasets: [
-          {
-            data: [40, 20, 12],
-            backgroundColor: chartColor,
-          },
-        ],
-      };
-    },
-    chartOptions() {
+    finalChartOptions() {
       const textColor = this.isDarkMode ? 'white' : 'black';
-      return {
+      const defaultOptions = {
         responsive: true,
         scales: {
-          x: {
-            ticks: {
-              color: textColor,
-            },
-            grid: {
-              color: this.isDarkMode ? '#444444' : '#e5e5e5',
-            },
-          },
-          y: {
-            ticks: {
-              color: textColor,
-            },
-            grid: {
-              color: this.isDarkMode ? '#444444' : '#e5e5e5',
-            },
-          },
+          x: { ticks: { color: textColor }, grid: { color: this.isDarkMode ? '#444444' : '#e5e5e5' } },
+          y: { ticks: { color: textColor }, grid: { color: this.isDarkMode ? '#444444' : '#e5e5e5' } },
         },
         plugins: {
-          legend: {
-            labels: {
-              color: textColor,
-            },
-          },
+          legend: { display: false },
         },
       };
+
+      // Deep merge custom options into defaults
+      return { ...defaultOptions, ...this.chartOptions };
     },
   },
 };
@@ -68,6 +49,8 @@ export default {
 
 <style scoped>
 .chart-container {
+  position: relative;
+  min-height: 400px; /* Ensure container has enough height */
   background-color: var(--color-background);
   padding: 1rem;
 }
