@@ -34,4 +34,8 @@
 .alunos {
   margin-top: 20px;
 }
+
+[data-theme='dark'] .about a {
+  color: #64b5f6;
+}
 </style>
