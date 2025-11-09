@@ -1,0 +1,39 @@
+Occupation_Name,CBO_Code,Automation_Probability,Number_of_Workers,Risk_Level,Sector,Impact_Type,AI_Exposure_Level,Growth_Note,Source,Job Openings (2024),Projected Openings (2030)
+Administrative Assistant,411010.0,0.96,2081939.0,High,Office and Administrative Support,Decrease,,,UFRJ,21292,19460
+Office Clerk,411005.0,0.96,2036571.0,High,Office and Administrative Support,Decrease,,,UFRJ,29064,26002
+Retailer Salesclerk,521110.0,0.92,2007042.0,High,Sales and Related,Decrease,,,UFRJ,39105,34679
+Janitor,514320.0,0.66,1344939.0,Medium,Services,Mixed,,,UFRJ,23759,23535
+Truck Driver (Regional and International Routes),782510.0,0.79,877081.0,High,Transportation and Material Moving,Decrease,,,UFRJ,8358,6782
+Production Line Feeder,784205.0,0.93,860740.0,High,Production,Decrease,,,UFRJ,6608,6161
+Cashier,421125.0,0.97,823476.0,High,Sales and Related,Decrease,,,UFRJ,9084,6675
+Middle-Level Teacher in Fundamental Teaching,331205.0,0.56,749667.0,Medium,"Education, Legal, Community Service, Arts, and Media",Mixed,,,UFRJ,11049,11220
+Security Guard,517330.0,0.84,630387.0,High,Services,Decrease,,,UFRJ,3507,2791
+Construction Helper,717020.0,0.88,571663.0,High,Construction and Extraction,Decrease,,,UFRJ,4377,3123
+Telemarketing Operator,,0.99,868910.5,High,,Decrease,,,UFRJ,11970,10827
+Music Therapist,,0.0028,868910.5,Low,,Increase,,,UFRJ,5803,5131
+Community Health Workers,,,868910.5,Low,Health,Increase,Less exposed,High net skill change,PwC,6464,7678
+Web Technicians,,,868910.5,Low,IT,Increase,Less exposed,High net skill change,PwC,8554,9945
+Economists,,,868910.5,Average,,Increase,Average,High net skill change,PwC,5830,6839
+Judges,,,868910.5,Average,,Increase,Average,High net skill change,PwC,15215,16419
+Finance managers,,,868910.5,High,,Increase,More exposed,High net skill change,PwC,6583,7463
+Mining supervisors,,,868910.5,High,,Increase,More exposed,High net skill change,PwC,9901,11119
+Railway brake/signal/switch operators,,,868910.5,High,,Increase,More exposed,High net skill change,PwC,15860,17525
+Life science technicians (excluding medical),,,868910.5,High,,Increase,More exposed,High net skill change,PwC,14560,16353
+Health associate professionals,,,868910.5,,,Increase,More exposed,Average growth,PwC,11086,12490
+Food preparation assistants,,,868910.5,,,Increase,Less exposed,Average growth,PwC,15678,16635
+Teaching professionals,,,868910.5,,,Increase,Average,Average growth,PwC,8189,9084
+Sales workers,,,868910.5,,,Increase,Average,Average growth,PwC,16259,18859
+Protective services workers,,,868910.5,,,Increase,Less exposed,Average growth,PwC,8215,9457
+Business and administration professionals,,,868910.5,,,Increase,More exposed,Average growth,PwC,8309,9867
+Chief executives/senior officials/legislators,,,868910.5,,,Increase,More exposed,Average growth,PwC,6639,7312
+Assemblers,,,868910.5,,,Mixed,Less exposed (GenAI),Average growth,PwC,14730,14620
+Cleaners and helpers,,,868910.5,,,Mixed,Less exposed (GenAI),Average growth,PwC,13389,13390
+Personal care workers,,,868910.5,,,Mixed,Average (GenAI),Average growth,PwC,4430,4484
+Stationary plant and machine operators,,,868910.5,,,Mixed,More exposed (GenAI),Average growth,PwC,10157,9977
+General clerical workers,,,4000000.0,High (GenAI gradient 4),Administrative,Decrease,,,Valor,51553,45495
+Creative Artists,2651.0,0.042,28673.0,Low,,Mixed,,,dadun,324,323
+"Sociologists, Anthropologists and Related Professionals",2633.0,0.44,691.0,Medium,,Mixed,,,dadun,12,12
+"Car, Taxi and Van Drivers",8322.0,0.98,1508755.0,High,Transportation,Decrease,,,dadun,14269,10420
+Lawyers,2612.0,0.52,868910.5,Medium,,Mixed,,,dadun,5342,5293
+Managing Directors and Chief Executives,1219.0,0.015,868910.5,Low,,Increase,,,dadun,6163,6501
+Business Services Agents,3334.0,0.97,868910.5,High,,Decrease,,,dadun,8474,6617
