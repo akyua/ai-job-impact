@@ -1,17 +1,17 @@
 <template>
   <div class="chart-container">
-    <Bar :data="chartData" :options="finalChartOptions" />
+    <Doughnut :data="chartData" :options="finalChartOptions" />
   </div>
 </template>
 
 <script>
-import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+import { Doughnut } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+ChartJS.register(Title, Tooltip, Legend, ArcElement)
 
 export default {
-  components: { Bar },
+  components: { Doughnut },
   props: {
     chartData: {
       type: Object,
@@ -31,12 +31,22 @@ export default {
       const textColor = this.isDarkMode ? 'white' : 'black';
       const defaultOptions = {
         responsive: true,
-        scales: {
-          x: { ticks: { color: textColor }, grid: { color: this.isDarkMode ? '#444444' : '#e5e5e5' } },
-          y: { ticks: { color: textColor }, grid: { color: this.isDarkMode ? '#444444' : '#e5e5e5' } },
-        },
+        maintainAspectRatio: false,
         plugins: {
-          legend: { display: false },
+          legend: { 
+            display: true,
+            position: 'bottom',
+            labels: {
+              color: textColor,
+              padding: 15,
+              font: {
+                size: 12
+              }
+            }
+          },
+          tooltip: {
+            enabled: true
+          }
         },
       };
 
