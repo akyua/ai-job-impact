@@ -40,7 +40,6 @@ export default {
         },
       };
 
-      // Deep merge custom options into defaults
       return { ...defaultOptions, ...this.chartOptions };
     },
   },
@@ -50,7 +49,7 @@ export default {
 <style scoped>
 .chart-container {
   position: relative;
-  min-height: 400px; /* Ensure container has enough height */
+  min-height: 400px;
   background-color: var(--color-background);
   padding: 1rem;
 }
