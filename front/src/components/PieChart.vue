@@ -6,9 +6,6 @@
 
 <script>
 import { Doughnut } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js'
-
-ChartJS.register(Title, Tooltip, Legend, ArcElement)
 
 export default {
   components: { Doughnut },
@@ -33,22 +30,26 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-          legend: { 
-            display: true,
-            position: 'bottom',
-            labels: {
-              color: textColor,
-              padding: 15,
-              font: {
-                size: 12
-              }
-            }
-          },
-          tooltip: {
-            enabled: true
-          }
-        },
-      };
+                  legend: {
+                    display: true,
+                    position: 'bottom',
+                    labels: {
+                      color: textColor,
+                      padding: 15,
+                      font: {
+                        size: 12
+                      }
+                    }
+                  },
+                  tooltip: {
+                    enabled: true
+                  },
+                  datalabels: {
+                    font: {
+                      weight: 'bolder'
+                    }
+                  }
+                },      };
 
       return { ...defaultOptions, ...this.chartOptions };
     },

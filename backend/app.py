@@ -79,6 +79,10 @@ def get_jobs_by_risk():
     ascending = sort_order == 'asc'
     sorted_df = filtered_df.sort_values(by='Automation Risk (%)', ascending=ascending).head(limit)
     
+    if ascending:
+        sorted_df['Safety Score (%)'] = 100 - sorted_df['Automation Risk (%)']
+        sorted_df = sorted_df.drop(columns=['Automation Risk (%)'])
+    
     return jsonify(sorted_df.to_dict(orient='records'))
 
 @app.route('/api/job-growth', methods=['GET'])

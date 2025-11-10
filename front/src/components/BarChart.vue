@@ -37,6 +37,11 @@ export default {
         },
         plugins: {
           legend: { display: false },
+          datalabels: {
+            font: {
+              weight: 'bolder'
+            }
+          }
         },
       };
 

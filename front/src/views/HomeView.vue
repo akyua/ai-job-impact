@@ -34,7 +34,7 @@
       </section>
 
       <section class="chart-section">
-        <h2>Top 15 Empregos com Menor Risco de Automação (%)</h2>
+        <h2>Top 15 Empregos com Maior Pontuação de Segurança (%)</h2>
         <BarChart :chartData="lowRiskJobsData" :chartOptions="lowRiskHorizontalChartOptions" :isDarkMode="isDarkMode" />
       </section>
 
@@ -42,7 +42,7 @@
         <h3>Análise dos 3 Principais Empregos de Baixo Risco</h3>
         <ul>
           <li v-for="job in top3LowRiskJobs" :key="job['Job Title']">
-            <strong>{{ translateTitle(job['Job Title']) }} (Risco: {{ job['Automation Risk (%)'] }}%)</strong>
+            <strong>{{ translateTitle(job['Job Title']) }} (Pontuação de Segurança: {{ job['Safety Score (%)'].toFixed(2) }}%)</strong>
             <p>{{ getRiskExplanation(job, 'low') }}</p>
           </li>
         </ul>
@@ -142,7 +142,7 @@ export default {
         indexAxis: 'y',
         responsive: true,
         maintainAspectRatio: false,
-        layout: { padding: { left: 25 } },
+        layout: { padding: { left: 25, right: 40 } },
         scales: {
           x: { min: 0, max: 100, ticks: { color: textColor } },
           y: { ticks: { color: textColor } }
@@ -153,32 +153,44 @@ export default {
             callbacks: {
               label: (context) => `Risco de Automação: ${context.parsed.x.toFixed(2)}%`
             }
+          },
+          datalabels: {
+            anchor: 'end',
+            align: 'end',
+            formatter: (value) => `${value.toFixed(2)}%`,
+            color: textColor,
+            font: {
+              weight: 'bold'
+            }
           }
         }
       };
     },
     lowRiskHorizontalChartOptions() {
-      const maxVal = this.lowRiskJobsData.datasets.length
-        ? Math.max(...this.lowRiskJobsData.datasets[0].data)
-        : 0;
-      let suggestedMax = Math.ceil(maxVal) + 1;
-      suggestedMax = suggestedMax < 10 ? 10 : suggestedMax;
-
       const textColor = this.isDarkMode ? 'white' : 'black';
       return {
         indexAxis: 'y',
         responsive: true,
         maintainAspectRatio: false,
-        layout: { padding: { left: 25 } },
+        layout: { padding: { left: 25, right: 40 } },
         scales: {
-          x: { min: 0, max: suggestedMax, ticks: { color: textColor } },
+          x: { min: 0, max: 100, ticks: { color: textColor } },
           y: { ticks: { color: textColor } }
         },
         plugins: {
           legend: { display: false },
           tooltip: {
             callbacks: {
-              label: (context) => `Risco de Automação: ${context.parsed.x.toFixed(2)}%`
+              label: (context) => `Pontuação de Segurança: ${context.parsed.x.toFixed(2)}%`
+            }
+          },
+          datalabels: {
+            anchor: 'end',
+            align: 'end',
+            formatter: (value) => `${value.toFixed(2)}%`,
+            color: textColor,
+            font: {
+              weight: 'bold'
             }
           }
         }
@@ -206,6 +218,9 @@ export default {
             callbacks: {
               label: (context) => `Crescimento Projetado: ${context.parsed.y.toFixed(2)}%`
             }
+          },
+          datalabels: {
+            display: false
           }
         }
       };
@@ -239,6 +254,9 @@ export default {
             callbacks: {
               label: (context) => `Trabalhadores em Risco: ${context.parsed.y.toLocaleString()}`
             }
+          },
+          datalabels: {
+            display: false
           }
         }
       };
@@ -343,7 +361,7 @@ export default {
             : translatedTitle;
         }),
         datasets: [{
-          data: data.map(item => item['Automation Risk (%)']),
+          data: data.map(item => sortOrder === 'asc' ? item['Safety Score (%)'] : item['Automation Risk (%)']),
           backgroundColor: sortOrder === 'desc' ? '#c0392b' : '#27ae60',
           barPercentage: 0.9,
           categoryPercentage: 0.8,
@@ -423,9 +441,27 @@ export default {
       };
     },
     pieChartOptions() {
+      const textColor = this.isDarkMode ? 'white' : 'black';
       return {
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+          datalabels: {
+            color: '#000', // Set to pure black as requested
+            formatter: (value, context) => {
+              return value.toLocaleString();
+            },
+            font: {
+              weight: 'bold',
+              size: 14
+            }
+          },
+          legend: {
+            labels: {
+              color: textColor
+            }
+          }
+        }
       };
     }
   }
