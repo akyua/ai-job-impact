@@ -6,7 +6,7 @@ from flask_cors import CORS
 def load_data_once():
     """Loads data from CSV using Spark and converts to a Pandas DataFrame."""
     spark = SparkSession.builder.appName("AIJobTrends").getOrCreate()
-    file_path = "backend/data/ai_job_trends_dataset.csv"
+    file_path = "data/ai_job_trends_dataset.csv"
     df = spark.read.csv(file_path, header=True, inferSchema=True)
     
     # Clean up column names that may have issues
