@@ -142,7 +142,7 @@ export default {
         indexAxis: 'y',
         responsive: true,
         maintainAspectRatio: false,
-        layout: { padding: { left: 25, right: 40 } },
+        layout: { padding: { left: 25, right: 50 } },
         scales: {
           x: { min: 0, max: 100, ticks: { color: textColor } },
           y: { ticks: { color: textColor } }
@@ -172,7 +172,7 @@ export default {
         indexAxis: 'y',
         responsive: true,
         maintainAspectRatio: false,
-        layout: { padding: { left: 25, right: 40 } },
+        layout: { padding: { left: 25, right: 50 } },
         scales: {
           x: { min: 0, max: 100, ticks: { color: textColor } },
           y: { ticks: { color: textColor } }
@@ -275,6 +275,26 @@ export default {
   methods: {
     translateTitle(title) {
       return translations[title] || title;
+    },
+    translateIndustry(industry) {
+      const industryTranslations = {
+        'Health': 'Saúde',
+        'IT': 'TI',
+        'Healthcare': 'Cuidados de Saúde',
+        'Entertainment': 'Entretenimento',
+        'Retail': 'Varejo',
+        'Finance': 'Finanças',
+        'Manufacturing': 'Indústria',
+        'Education': 'Educação',
+        'Transportation': 'Transporte',
+        'Services': 'Serviços',
+        'Production': 'Produção',
+        'Office and Administrative Support': 'Suporte de Escritório e Administrativo',
+        'Administrative': 'Administrativo',
+        'Sales and Related': 'Vendas e Relacionados',
+        'Education, Legal, Community Service, Arts, and Media': 'Educação',
+      };
+      return industryTranslations[industry] || industry;
     },
     getRiskExplanation(job, riskType) {
       const title = job['Job Title'];
@@ -382,7 +402,7 @@ export default {
       this.jobGrowth = data;
 
       this.jobGrowthData = {
-        labels: data.map(item => item['Industry']),
+        labels: data.map(item => this.translateIndustry(item['Industry'])),
         datasets: [{
           data: data.map(item => item['Projected Growth (%)']),
           backgroundColor: '#3498db',
