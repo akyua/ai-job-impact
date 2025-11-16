@@ -59,8 +59,8 @@
       </section>
 
       <section v-if="selectedLocation === 'Brazil'" class="chart-section">
-        <h2>Tipo de Impacto da IA no Emprego</h2>
-        <PieChart :chartData="impactTypeData" :chartOptions="pieChartOptions" :isDarkMode="isDarkMode" />
+        <h2>Distribuição de Trabalhadores por Setor</h2>
+        <BarChart :chartData="workersByIndustryData" :chartOptions="workersByIndustryChartOptions" :isDarkMode="isDarkMode" />
       </section>
 
       <section v-if="selectedLocation === 'Brazil'" class="chart-section full-width">
@@ -128,7 +128,7 @@ export default {
       lowRiskJobsData: { labels: [], datasets: [] },
       jobGrowthData: { labels: [], datasets: [] },
       workersByRiskData: { labels: [], datasets: [] },
-      impactTypeData: { labels: [], datasets: [] },
+      workersByIndustryData: { labels: [], datasets: [] },
       sectorsAtRiskData: { labels: [], datasets: [] },
     };
   },
@@ -252,7 +252,43 @@ export default {
           legend: { display: false },
           tooltip: {
             callbacks: {
-              label: (context) => `Trabalhadores em Risco: ${context.parsed.y.toLocaleString()}`
+              label: (context) => `Trabalhadores: ${context.parsed.y.toLocaleString()}`
+            }
+          },
+          datalabels: {
+            display: false
+          }
+        }
+      };
+    },
+    workersByIndustryChartOptions() {
+      const textColor = this.isDarkMode ? 'white' : 'black';
+      return {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: { 
+          x: { 
+            ticks: { 
+              color: textColor,
+              maxRotation: 45,
+              minRotation: 45,
+              align: 'end'
+            } 
+          }, 
+          y: { 
+            ticks: { 
+              color: textColor,
+              callback: function(value) {
+                return (value / 1000000).toFixed(1) + 'M';
+              }
+            }
+          } 
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (context) => `Trabalhadores: ${context.parsed.y.toLocaleString()}`
             }
           },
           datalabels: {
@@ -349,7 +385,7 @@ export default {
           this.fetchJobsByRisk('asc'),
           this.fetchJobGrowth(),
           this.fetchWorkersByRisk(),
-          this.fetchImpactType(),
+          this.fetchWorkersByIndustry(),
           this.fetchSectorsAtRisk(),
         ]);
       } catch (error) {
@@ -424,22 +460,16 @@ export default {
         }]
       };
     },
-    async fetchImpactType() {
+    async fetchWorkersByIndustry() {
       const params = { location: this.selectedLocation };
-      const response = await axios.get(`${API_BASE_URL}/impact-type`, { params });
+      const response = await axios.get(`${API_BASE_URL}/workers-by-industry`, { params });
       const data = response.data;
 
-      const impactColors = {
-        'Increase': '#27ae60',
-        'Decrease': '#e74c3c',
-        'Mixed': '#f39c12'
-      };
-
-      this.impactTypeData = {
-        labels: data.map(item => item['Impact Type']),
+      this.workersByIndustryData = {
+        labels: data.map(item => this.translateIndustry(item['Industry'])),
         datasets: [{
-          data: data.map(item => item['Count']),
-          backgroundColor: data.map(item => impactColors[item['Impact Type']] || '#95a5a6'),
+          data: data.map(item => item['Workers']),
+          backgroundColor: '#3498db',
         }]
       };
     },
