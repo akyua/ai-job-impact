@@ -77,7 +77,7 @@ import BarChart from '../components/BarChart.vue';
 import PieChart from '../components/PieChart.vue';
 
 const API_BASE_URL = 'http://localhost:5001/api';
-const MAX_LABEL_LENGTH = 25; // Define max length for job titles
+const MAX_LABEL_LENGTH = 25;
 
 const translations = {
   'Meteorologist': 'Meteorologista',
@@ -98,14 +98,14 @@ const translations = {
   'Armed forces logistics/support/administrative officer': 'Oficial de Logística/Suporte das Forças Armadas',
   'Sports development officer': 'Oficial de Desenvolvimento Esportivo',
   'Jeweller': 'Joalheiro(a)',
-  'Designer, jewellery': 'Designer de Joias', // Corrected entry
+  'Designer, jewellery': 'Designer de Joias',
   'Clinical biochemist': 'Bioquímico(a) Clínico(a)',
   'Therapist': 'Terapeuta',
   'Nutritionist': 'Nutricionista',
   'Medical sales representative': 'Representante de Vendas Médicas',
-  'Banker': 'Bancário(a)', // New
-  'Electrical Engineer': 'Engenheiro(a) Eletricista', // New
-  'Marine Scientist': 'Cientista Marinho(a)' // New
+  'Banker': 'Bancário(a)',
+  'Electrical Engineer': 'Engenheiro(a) Eletricista',
+  'Marine Scientist': 'Cientista Marinho(a)'
 };
 
 export default {
@@ -300,7 +300,6 @@ export default {
       const title = job['Job Title'];
       
       const specificExplanations = {
-        // --- High Risk Examples ---
         'Meteorologist': 'A meteorologia moderna depende da análise de padrões em conjuntos de dados massivos (imagens de satélite, sensores, modelos climáticos). A IA é excepcionalmente eficiente nisso, prevendo o tempo com maior precisão e velocidade. Embora a interpretação final e a comunicação de alertas complexos ainda possam exigir um especialista, a maior parte da análise de dados, que é o cerne do trabalho, é altamente automatizável.',
         'Data Entry Clerk': 'Este trabalho consiste em transferir informações de um formato para outro, uma tarefa altamente estruturada e repetitiva. Algoritmos de OCR (Reconhecimento Óptico de Caracteres) e RPA (Automação de Processos Robóticos) podem executar essa função 24/7 com velocidade e precisão superiores, tornando a intervenção humana quase obsoleta.',
         'Telemarketer': 'Os avanços em modelos de linguagem de IA (como os que alimentam chatbots) permitem a criação de sistemas que podem conduzir conversas de vendas, responder a perguntas e registrar informações de forma autônoma. Eles podem realizar milhares de chamadas simultaneamente e otimizar roteiros em tempo real, superando a eficiência humana.',
@@ -312,7 +311,6 @@ export default {
         'Media buyer': 'Compradores de mídia otimizam a alocação de orçamentos de publicidade. A IA pode analisar o desempenho de campanhas em tempo real, identificar os canais mais eficazes e ajustar lances e segmentação automaticamente, superando a capacidade humana de processar e reagir a grandes volumes de dados de mercado.',
         'Investment analyst': 'Analistas de investimento pesquisam e avaliam ativos financeiros. A IA pode processar e interpretar notícias financeiras, relatórios de empresas e dados de mercado em uma escala e velocidade impossíveis para humanos, identificando padrões e prevendo tendências. Embora a tomada de decisão final possa permanecer humana, a maior parte da análise de dados pode ser automatizada.',
 
-        // --- Low Risk Examples ---
         'Chief Executive': 'A liderança executiva exige visão estratégica, negociação complexa, inteligência emocional para gerir pessoas e tomar decisões ambíguas com informações incompletas. Essas são qualidades profundamente humanas, baseadas em valores e intuição, que estão muito além da capacidade atual da IA.',
         'Surgeon': 'Embora a IA possa auxiliar no diagnóstico por imagem e a robótica possa aumentar a precisão dos movimentos, a cirurgia em si requer um nível extremo de destreza manual, adaptabilidade a imprevistos anatômicos em tempo real e a capacidade de tomar decisões críticas sob pressão. A responsabilidade final e a complexidade do toque humano mantêm o risco baixo.',
         'Graphic Designer': 'A criatividade, a compreensão de nuances culturais e a empatia com o usuário são centrais para o design. Embora a IA possa gerar elementos visuais, a concepção original, a direção artística e a capacidade de traduzir emoções e conceitos complexos em soluções visuais permanecem como diferenciais humanos.',
@@ -327,12 +325,10 @@ export default {
         'Medical sales representative': 'Representantes de vendas médicas constroem relacionamentos com profissionais de saúde, entendem suas necessidades e comunicam informações complexas sobre produtos. Isso exige habilidades interpessoais fortes, persuasão, conhecimento técnico e a capacidade de adaptar a abordagem a cada cliente, aspectos que a IA não consegue replicar eficazmente.'
       };
 
-      // Return the specific explanation if available
       if (specificExplanations[title]) {
         return specificExplanations[title];
       }
 
-      // Fallback to generic explanations if no specific one is found
       return riskType === 'high'
         ? 'Este tipo de trabalho geralmente envolve tarefas repetitivas e padronizadas, que são facilmente automatizadas por algoritmos e robôs.'
         : 'Esta profissão exige pensamento crítico, criatividade e habilidades interpessoais complexas, características que a IA atualmente não consegue replicar.';
@@ -467,7 +463,7 @@ export default {
         maintainAspectRatio: false,
         plugins: {
           datalabels: {
-            color: '#000', // Set to pure black as requested
+            color: '#000',
             formatter: (value, context) => {
               return value.toLocaleString();
             },
@@ -544,14 +540,14 @@ export default {
   background-color: var(--color-background-soft);
   padding: 1.5rem;
   border-radius: 8px;
-  min-height: 500px; /* Ensure charts have space */
+  min-height: 500px;
 }
 
 .analysis-section {
   background-color: var(--color-background-soft);
   padding: 1.5rem;
   border-radius: 8px;
-  margin-top: -1rem; /* Pulls it closer to the chart above */
+  margin-top: -1rem;
   border-top: 1px solid var(--color-border);
 }
 
@@ -562,7 +558,7 @@ export default {
 
 .analysis-section ul, .analysis-section div {
   text-align: left;
-  padding: 0 1rem; /* Add some padding for better readability */
+  padding: 0 1rem;
 }
 
 .analysis-section ul {
@@ -571,14 +567,14 @@ export default {
 }
 
 .analysis-section li {
-  margin-bottom: 2rem; /* Increased spacing */
+  margin-bottom: 2rem;
 }
 
 .analysis-section li p {
   margin-top: 0.5rem;
   font-style: italic;
   color: var(--color-text-soft);
-  text-align: left; /* Ensure paragraph is left-aligned */
+  text-align: left;
 }
 
 .analysis-section.full-width {

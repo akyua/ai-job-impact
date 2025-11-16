@@ -76,7 +76,7 @@ nav a {
   text-decoration: none;
   font-weight: bold;
   position: relative;
-  padding-bottom: 5px; /* Space for the underline */
+  padding-bottom: 5px;
 }
 
 nav a::after {
