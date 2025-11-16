@@ -80,32 +80,75 @@ const API_BASE_URL = 'http://localhost:5001/api';
 const MAX_LABEL_LENGTH = 25;
 
 const translations = {
-  'Meteorologist': 'Meteorologista',
-  'Data Entry Clerk': 'Digitador(a)',
-  'Telemarketer': 'Operador(a) de Telemarketing',
-  'Accountant': 'Contador(a)',
-  'Truck Driver': 'Motorista de Caminhão',
-  'Fast food restaurant manager': 'Gerente de Fast Food',
-  'Water engineer': 'Engenheiro(a) Hídrico(a)',
-  'Hydrologist': 'Hidrologista',
-  'Media buyer': 'Comprador(a) de Mídia',
-  'Investment analyst': 'Analista de Investimentos',
-  'Chief Executive': 'Diretor(a) Executivo(a)',
-  'Surgeon': 'Cirurgião(ã)',
-  'Graphic Designer': 'Designer Gráfico(a)',
-  'Software Engineer': 'Engenheiro(a) de Software',
-  'Teacher': 'Professor(a)',
-  'Armed forces logistics/support/administrative officer': 'Oficial de Logística/Suporte das Forças Armadas',
-  'Sports development officer': 'Oficial de Desenvolvimento Esportivo',
-  'Jeweller': 'Joalheiro(a)',
-  'Designer, jewellery': 'Designer de Joias',
+  'Telemarketing Operator': 'Operador(a) de Telemarketing',
+  'Car, Taxi and Van Drivers': 'Motorista de Táxi e Vans',
+  'Business Services Agents': 'Agente de Serviços Empresariais',
+  'Cashier': 'Caixa',
+  'Office Clerk': 'Auxiliar Administrativo(a)',
+  'Administrative Assistant': 'Assistente Administrativo(a)',
+  'Production Line Feeder': 'Alimentador(a) de Linha de Produção',
+  'Retailer Salesclerk': 'Vendedor(a) de Varejo',
+  'construction Helper': 'Ajudante de Construção',
+  'Security guard': 'Guarda de Segurança',
+  'Truck Driver (Regional an...)': 'Motorista de Caminhão (Regional)',
+  'Janitor': 'Zelador(a)',
+  'Proofreader': 'Revisor(a) de Texto',
+  'Pension scheme manager': 'Gerente de Esquemas de Pensão',
+  'Wellsite geologist': 'Geólogo(a) de Poço',
+  'Music therapist': 'Terapeuta Musical',
+  'Managing Directors and Chief Executives': 'Diretores Executivos e Gerentes',
+  'Creative Artists': 'Artistas Criativos',
+  'Building surveyor': 'Topógrafo(a) de Edifícios',
+  'Careers adviser': 'Orientador(a) de Carreira',
+  'Art therapist': 'Terapeuta de Arte',
+  'Computer games developer': 'Desenvolvedor(a) de Jogos',
+  'Careers information offic...': 'Oficial de Informação de Carreiras',
+  'Heritage Manager': 'Gerente de Patrimônio',
+  'Oceanographer': 'Oceanógrafo(a)',
+  'Probation Officer': 'Oficial de Liberdade Condicional',
+  'Information systems manag...': 'Gerente de Sistemas de Informação',
+  'Estate manager/land agent': 'Gerente Imobiliário/Agente de Terras',
+  'Farm manager': 'Gerente de Fazenda',
+  'Professor Emeritus': 'Professor Emérito',
+  'Clinical cytogeneticist': 'Citogeneticista Clínico(a)',
+  'Naval architect': 'Arquiteto(a) Naval',
+  'Development worker, commu...': 'Trabalhador(a) de Desenvolvimento Comunitário',
+  'Sales Executive': 'Executivo(a) de Vendas',
+  'Construction Helper': 'Ajudante de Construção',
+  'Eletronics Engineer': 'Engenheiro(a) Eletrônico(a)',
+  'Lecturer, further educati...': 'Palestrante em Educação Superior',
+  'Fiancial Trader': 'Trader Financeiro',
+  'Copywriter, advertising': 'Redator(a) Publicitário(a)',
+  'Sales promotion account e...': 'Executivo(a) de Promoção de Vendas',
+  'Arts administrator': 'Administrador(a) de Artes',
+  'actuary': 'Atuário(a)',
+  'estate agent': 'Agente Imobiliário(a)',
+  'quarry manager': 'Gerente de Pedreira',
   'Clinical biochemist': 'Bioquímico(a) Clínico(a)',
-  'Therapist': 'Terapeuta',
-  'Nutritionist': 'Nutricionista',
-  'Medical sales representative': 'Representante de Vendas Médicas',
-  'Banker': 'Bancário(a)',
-  'Electrical Engineer': 'Engenheiro(a) Eletricista',
-  'Marine Scientist': 'Cientista Marinho(a)'
+  'diplomatic service opera...': 'Operador(a) de Serviço Diplomático',
+  'nature conservation offic...': 'Oficial de Conservação da Natureza',
+  'film/video editor': 'Editor(a) de Filme/Vídeo',
+  'transportation and material moving': 'Transporte e Movimentação de Materiais',
+  'office and administrative support': 'Suporte de Escritório e Administrativo',
+  'administrative': 'Administrativo',
+  'sales and related': 'Vendas e Relacionados',
+  'transportation': 'Transporte',
+  'production': 'Produção',
+  'services': 'Serviços',
+  'construction and extraction': 'Construção e Extração',
+  'Scientist, physiological': 'Cientista Fisiológico(a)',
+  'Development worker, community': 'Trabalhador(a) de Desenvolvimento Comunitário',
+  'Pensions consultant': 'Consultor(a) de Pensões',
+  'Building surveyor': 'Topógrafo(a) de Edifícios',
+  'Careers adviser': 'Orientador(a) de Carreira',
+  'Computer games developer': 'Desenvolvedor(a) de Jogos',
+  'Careers information officer': 'Oficial de Informação de Carreiras',
+  'Heritage manager': 'Gerente de Patrimônio',
+  'Oceanographer': 'Oceanógrafo(a)',
+  'Probation officer': 'Oficial de Liberdade Condicional',
+  'Information systems manager': 'Gerente de Sistemas de Informação',
+  'Estate manager/land agent': 'Gerente Imobiliário/Agente de Terras',
+  'Farm manager': 'Gerente de Fazenda',
 };
 
 export default {
@@ -310,9 +353,16 @@ export default {
   },
   methods: {
     translateTitle(title) {
-      return translations[title] || title;
+      const lowerTitle = title.toLowerCase();
+      for (const [key, value] of Object.entries(translations)) {
+        if (key.toLowerCase() === lowerTitle) {
+          return value;
+        }
+      }
+      return title;
     },
     translateIndustry(industry) {
+      const lowerIndustry = industry.toLowerCase();
       const industryTranslations = {
         'Health': 'Saúde',
         'IT': 'TI',
@@ -329,11 +379,26 @@ export default {
         'Administrative': 'Administrativo',
         'Sales and Related': 'Vendas e Relacionados',
         'Education, Legal, Community Service, Arts, and Media': 'Educação',
+        'transportation and material moving': 'Transporte e Movimentação de Materiais',
+        'office and administrative support': 'Suporte de Escritório e Administrativo',
+        'administrative': 'Administrativo',
+        'sales and related': 'Vendas e Relacionados',
+        'transportation': 'Transporte',
+        'production': 'Produção',
+        'services': 'Serviços',
+        'construction and extraction': 'Construção e Extração',
       };
-      return industryTranslations[industry] || industry;
+      
+      for (const [key, value] of Object.entries(industryTranslations)) {
+        if (key.toLowerCase() === lowerIndustry) {
+          return value;
+        }
+      }
+      return industry;
     },
     getRiskExplanation(job, riskType) {
       const title = job['Job Title'];
+      const lowerTitle = title.toLowerCase();
       
       const specificExplanations = {
         'Telemarketing Operator': 'Operadores de telemarketing realizam chamadas padronizadas seguindo roteiros pré-definidos. A IA pode automatizar completamente esse processo com chatbots de voz avançados, reconhecimento de fala e sistemas de resposta automática, eliminando a necessidade de intervenção humana para a maioria das interações.',
@@ -357,9 +422,11 @@ export default {
         'Nutritionist': 'Nutricionistas criam planos alimentares personalizados e fornecem aconselhamento de saúde. Isso requer uma compreensão profunda das necessidades individuais, empatia, motivação e a capacidade de adaptar estratégias com base no comportamento e das preferências do cliente. A IA pode gerar planos genéricos, mas a personalização e o suporte humano são cruciais.',
         'Medical sales representative': 'Representantes de vendas médicas constroem relacionamentos com profissionais de saúde, entendem suas necessidades e comunicam informações complexas sobre produtos. Isso exige habilidades interpessoais fortes, persuasão, conhecimento técnico e a capacidade de adaptar a abordagem a cada cliente, aspectos que a IA não consegue replicar eficazmente.'
       };
-
-      if (specificExplanations[title]) {
-        return specificExplanations[title];
+      
+      for (const [key, value] of Object.entries(specificExplanations)) {
+        if (key.toLowerCase() === lowerTitle) {
+          return value;
+        }
       }
 
       return riskType === 'high'
@@ -449,8 +516,14 @@ export default {
         'Low': '#27ae60'
       };
 
+      const riskLevelTranslations = {
+        'High': 'Alto',
+        'Medium': 'Médio', 
+        'Low': 'Baixo'
+      };
+
       this.workersByRiskData = {
-        labels: data.map(item => item['Risk Level']),
+        labels: data.map(item => riskLevelTranslations[item['Risk Level']] || item['Risk Level']),
         datasets: [{
           data: data.map(item => item['Workers']),
           backgroundColor: data.map(item => riskColors[item['Risk Level']] || '#95a5a6'),
@@ -476,7 +549,7 @@ export default {
       const data = response.data;
 
       this.sectorsAtRiskData = {
-        labels: data.map(item => item['Sector']),
+        labels: data.map(item => this.translateIndustry(item['Sector'])),
         datasets: [{
           data: data.map(item => item['Workers at Risk']),
           backgroundColor: '#e74c3c',
